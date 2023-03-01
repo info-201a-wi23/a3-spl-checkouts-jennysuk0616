@@ -2,85 +2,43 @@
 title: "A3: SPL Library Checkouts"
 output: html_document
 ---
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(dplyr)
+library(stringr)
+library(ggplot2)
 
+spl_df <- read.csv("~/Documents/INFO201/assignments/week-8-assignments/a3-spl-checkouts-jennysuk0616/INFO 201 A3 2017-2023-10-Checkouts-SPL-Data.csv")
+
+```
 ### Introduction
 
-An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
+I chose the second dataset in the available stock of checkout data because it takes up less storage on my computer. My central motivation when examining the data is to compare the popularity of competing books in specific genres. The books I contrast are not necessarily the top proven two books of that genre. Instead, the comparisons include the books I want to see graphed next to each other. The books in question follow the criteria I deem similar in genre/theme concept and compete to capture a similar reader demographic. 
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
-
-These will likely be calculated using your DPLYR skills, answering questions such as:
-
-- What is the average number of checkouts for each item?
-- What is the month or year with the most/least checkouts for a book that you're interested in?
-- What is the month or year with the most/least checkouts for ebooks?
-- How has the number of print book checkouts changed over time?
-
-Feel free to calculate and report values that you find relevant.
+The first chart includes Rick Riordan’s The Lightning Thief and J. K. Rowling’s Harry Potter and the Sorcerer’s Stone. I was surprised to learn that Rowling’s checkout rates were consistently higher than Riordan’s checkouts from 2017 to 2023. Riordan’s work peaked only at 1239 checkouts, while Rowling’s work peaked at 3786 checkouts. The second chart revealed that George Orwell’s 1984 was consistently more popular than Ray Bradbury’s Fahrenheit 451 in the Seattle Public Library from 2017 through 2023. For reference, the maximum checkout quantity of 1984 was 353, and the maximum checkout quantity of Fahrenheit 451 was just 110. The third chart features Andrzej Sapkowski’s The Last Wish (from The Witcher) and J. R. R. Tolkien’s The Fellowship of the Ring (from Lord of the Rings). This chart was the only one where two variables’ checkout quantities intersected in 2021. Both books peaked at relatively close checkouts during different times: The Last Wish in 2020 at 857 checkouts and The Fellowship of the Ring in 2022 at 881 checkouts. Interestingly, data on The Last Wish does not start until the later months of 2018, which could imply a plethora of scenarios, such as it not meeting the criteria to be included in the data collection (e.g., did not meet the ten checkouts minimum per month, did not arrive at the library, etc.). 
 
 ### The Dataset
 
-- Who collected/published the data?  
-- What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
-- How was the data collected or generated?  
-- Why was the data collected?  
-- What, if any, ethical questions do you need to consider when working with this data?  
-- What are possible limitations or problems with this data?   (at least 200 words)
-
+The dataset is published by the Seattle Public Library. The dataset includes data of items checked out at least 10 times per month from 2017 through 2023, which was collected by automated recording of the checkouts. The parameters of the data include usageClass, checkout type, material type, checkout year, checkout month, checkouts, title, ISBN, creator, subjects, publisher, publication year, and date.I can assume that the data collection was done to record which types of books (e.g., genres, works of authors, etc.) are the most or least popular during a certain time frame to figure out the demand of specific types of books. An ethical standard I need to be conscious of while analyzing the data is that datasets only reflect the data that want to be seen; thus, we cannot be fully certain that the data that is available may likely not be an accurate portrayal of trends. A possible limitation to the dataset is the data must meet the minimum criteria of 10 checkouts per month, which could lead to the exclusion of certain data that can discredit the accuracy of the dataset in displaying trends. The notion of data “cleanliness” is something I learned in Data Feminism that I always want to be mindful of when examining data—that “cleaning up”/simplifying data to make it easier to comprehend happens at the expense of data diversity and discounting certain data that could exclude narratives that could be important. Essentially, the dataset can be less likely to accurately capture the full picture, doing a disservice to the purpose of data science. Another possible limitation that should be noted is that we do not see the checkout data on The Last Wish until the later months of 2018. The Last Wish is obviously not a new series as it was first published in 1993, which could imply a plethora of scenarios, such as it not meeting the criteria to be included in the data collection (e.g., did not meet the ten checkouts minimum per month, did not arrive at the library, etc.); an odd collection of data for a particular book indeed. 
 
 ### First Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R")}
+```{r, echo = FALSE, warning = FALSE, code = readLines("chart-1.R")}
 ```
+
+I compared the two most influential fantasy books of my childhood, Rick Riordan’s The Lightning Thief and J. K. Rowling’s Harry Potter and the Sorcerer’s Stone (a heavy bias to Riordan’s series). The data shows that Rowling’s book consistently had more checkouts than Riordan’s book within the time frame. 
 
 ### Second Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The second chart that you will create and include will show another trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+```{r, echo = FALSE, warning = FALSE, code = readLines("chart-2.R")}
 ```
 
-### Your Choice
+I chose to compare 1984 and Fahrenheit 451 checkout datasets because I have fond memories of reading them as required classroom materials. The chart revealed that George Orwell’s 1984 was consistently more popular than Ray Bradbury’s Fahrenheit 451 in the Seattle Public Library from 2017 through 2023.
 
-The last chart is up to you. It could be a line plot, scatter plot, histogram, bar plot, stacked bar plot, and more. Here are some requirements to help guide your design:
+### Third Trends Over Time Chart
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+```{r, echo = FALSE, warning = FALSE, code = readLines("chart-3.R")}
 ```
 
-
+For the third chart, I compared two books I considered to be similar in genre concept, Andrzej Sapkowski’s The Last Wish (from The Witcher) and J. R. R. Tolkien’s The Fellowship of the Ring (from Lord of the Rings); both series feature elves and were recently adapted into television series. This chart was the only one where two variables’ checkout quantities intersected in 2021. Interestingly, data on The Last Wish does not start until the later months of 2018, which could imply a plethora of scenarios, such as it not meeting the criteria to be included in the data collection (e.g., did not meet the ten checkouts minimum per month, did not arrive at the library, etc.). 
